@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'catches',
+    'comments',
 ]
 
 MIDDLEWARE = [
