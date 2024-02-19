@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    """
+    A class for the profile model OneToOne relationship
+    with the User model Profile that is automatically created 
+    by Django signal when user is created
+    """
+
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -21,6 +27,9 @@ class Profile(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
+        """
+        Return info of the profile owner
+        """
         return f"{self.owner}'s profile"
 
 
