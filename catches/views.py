@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Catch
@@ -12,7 +13,8 @@ class CatchList(generics.ListCreateAPIView):
     serializer_class = CatchSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Catch.objects.annotate(
-        # annotations here for later
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -21,16 +23,17 @@ class CatchList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__profile',
-        # additional filter fields here
+        'likes__owner__profile',
+        'owner__profile',
     ]
     search_fields = [
         'owner__username',
         'title',
-        # additional search fields here
     ]
     ordering_fields = [
-        # additional ordering fields here
-        'created_at',
+        'likes_count',
+        'comments_count',
+        'likes__created_at',
     ]
 
     def perform_create(self, serializer):
@@ -43,6 +46,7 @@ class CatchDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CatchSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Catch.objects.annotate(
-        # annotations here for later
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
 
