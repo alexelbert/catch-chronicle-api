@@ -52,8 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
+    'django_filters',
 
     'profiles',
+    'catches',
 ]
 
 MIDDLEWARE = [
