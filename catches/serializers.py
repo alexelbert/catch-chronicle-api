@@ -56,13 +56,16 @@ class CatchSerializer(serializers.ModelSerializer):
             'comments_count',
             'profile_image',
             'created_at', 
-            'title', 
+            'caption', 
             'species', 
             'method', 
             'weight', 
             'length', 
             'location', 
+            'latitude',
+            'longitude',
             'time', 
             'weather', 
-            'lure'
+            'lure',
+            'image'
         ]
