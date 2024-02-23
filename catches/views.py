@@ -28,7 +28,7 @@ class CatchList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'owner__username',
-        'title',
+        'caption',
     ]
     ordering_fields = [
         'likes_count',
