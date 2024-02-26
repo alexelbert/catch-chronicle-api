@@ -9,10 +9,10 @@ class CurrentUserSerializer(UserDetailsSerializer):
     Instructions from the CI DRF Walkthrough project.
     """
     profile_id = serializers.ReadOnlyField(source='profile.id')
-    profile_image = serializers.ReadOnlyField(source='profile.image.url')
+    profile_picture = serializers.ReadOnlyField(source='profile.profile_picture.url')
 
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + (
             'profile_id', 
-            'profile_image'
+            'profile_picture'
         )
