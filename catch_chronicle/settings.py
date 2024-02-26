@@ -88,7 +88,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
-
     'profiles',
     'catches',
     'comments',
@@ -96,7 +95,8 @@ INSTALLED_APPS = [
     'followers',
 ]
 
-Site_ID = 1
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -107,13 +107,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware', # https://stackoverflow.com/a/77036615
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     os.environ.get('CLIENT_ORIGIN'),
-#     os.environ.get('CLIENT_ORIGIN_DEV')
-# ]
+
+CORS_ALLOWED_ORIGINS = []
+
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS.append(os.environ.get("CLIENT_ORIGIN"))
+if "CLIENT_ORIGIN_DEV" in os.environ:
+    CORS_ALLOWED_ORIGINS.append(os.environ.get("CLIENT_ORIGIN_DEV"))
+
 
 CORS_ALLOW_CREDENTIALS = True
 
