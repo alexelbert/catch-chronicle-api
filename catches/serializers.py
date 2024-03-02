@@ -11,7 +11,7 @@ class CatchSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    profile_picture = serializers.ReadOnlyField(source='owner.profile.profile_picture.url')
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
@@ -54,7 +54,7 @@ class CatchSerializer(serializers.ModelSerializer):
             'like_id',
             'likes_count',
             'comments_count',
-            'profile_image',
+            'profile_picture',
             'created_at', 
             'caption', 
             'species', 
