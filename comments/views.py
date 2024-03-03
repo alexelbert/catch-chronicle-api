@@ -9,7 +9,7 @@ class CommentList(generics.ListCreateAPIView):
     """
     List of comments, create new comment if user is logged in.
     """
-    
+
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
@@ -24,7 +24,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieving a comment, update or delete if user is owner.
     """
-    
+
     queryset = Comment.objects.all()
     serializer_class = CommentsDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
