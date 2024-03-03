@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Catch(models.Model):
     """
     Model to represent a catch made by a user.
-    Containing geolocation data and predefined lists. 
+    Containing geolocation data and predefined lists.
     """
-    
+
     METHOD_CHOICES = [
         ('flyrod', 'Fly Rod'),
         ('spinning', 'Spinning'),
@@ -24,7 +25,11 @@ class Catch(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     caption = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/', default='../default_profile_zsweuz', blank=False)
+    image = models.ImageField(
+        upload_to='images/',
+        default='../default_profile_zsweuz',
+        blank=False
+    )
 
     species = models.CharField(max_length=100)
     method = models.CharField(max_length=20, choices=METHOD_CHOICES)

@@ -39,6 +39,7 @@ class CatchList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class CatchDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a catch if you own it.
@@ -49,4 +50,3 @@ class CatchDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
-

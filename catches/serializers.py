@@ -11,7 +11,10 @@ class CatchSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
-    profile_picture = serializers.ReadOnlyField(source='owner.profile.profile_picture.url')
+    profile_picture = serializers.ReadOnlyField(
+        source='owner.profile.profile_picture.url'
+    )
+
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
@@ -30,10 +33,10 @@ class CatchSerializer(serializers.ModelSerializer):
                 "Image height can't be larger then 4096px"
             )
         return value
-    
+
     def get_is_owner(self, obj):
         return obj.owner == self.context["request"].user
-    
+
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -43,29 +46,28 @@ class CatchSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-
     class Meta:
         model = Catch
         fields = [
-            'id', 
-            'owner', 
+            'id',
+            'owner',
             'is_owner',
             'profile_id',
             'like_id',
             'likes_count',
             'comments_count',
             'profile_picture',
-            'created_at', 
-            'caption', 
-            'species', 
-            'method', 
-            'weight', 
-            'length', 
-            'location', 
+            'created_at',
+            'caption',
+            'species',
+            'method',
+            'weight',
+            'length',
+            'location',
             'latitude',
             'longitude',
-            'time', 
-            'weather', 
+            'time',
+            'weather',
             'lure',
             'image'
         ]

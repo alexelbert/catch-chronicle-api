@@ -56,7 +56,6 @@ class CatchListViewTests(APITestCase):
         self.assertEqual(response.status_code, 200)
 
 
-
 class CatchDetailViewTests(APITestCase):
     """
     Tests for CatchDetail view
