@@ -8,7 +8,7 @@ class FollowerSerializer(serializers.ModelSerializer):
     Serializer for Follower model.
     Create method is preventing the following the same user more then one time.
     """
-    
+
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
 
@@ -22,4 +22,6 @@ class FollowerSerializer(serializers.ModelSerializer):
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializers.ValidationError({'detail': 'You are following this user already.'})
+            raise serializers.ValidationError(
+                {'detail': 'You are following this user already.'}
+            )

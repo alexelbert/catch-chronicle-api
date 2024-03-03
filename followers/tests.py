@@ -13,8 +13,15 @@ class FollowListTest(APITestCase):
 
     def setUp(self):
         # Create two test users
-        self.user1 = User.objects.create_user(username="testuser1", password="testpassword")
-        self.user2 = User.objects.create_user(username="testuser2", password="testpassword")
+        self.user1 = User.objects.create_user(
+            username="testuser1",
+            password="testpassword"
+        )
+        self.user2 = User.objects.create_user(
+            username="testuser2",
+            password="testpassword"
+        )
+
         self.client = APIClient()
         self.url = reverse("followers")
 
@@ -36,7 +43,6 @@ class FollowListTest(APITestCase):
         self.assertEqual(count, 0)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    
     def test_user_cannot_follow_same_user_twice(self):
         self.client.login(username="testuser1", password="testpassword")
         Follower.objects.create(owner=self.user1, followed=self.user2)
@@ -47,7 +53,6 @@ class FollowListTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
-
 class FollowDetailTest(APITestCase):
     """
     Tests for the FollowerDetail view.
@@ -55,9 +60,20 @@ class FollowDetailTest(APITestCase):
 
     def setUp(self):
         # Create test users and a follow relationship
-        self.user1 = User.objects.create_user(username="testuser1", password="testpassword")
-        self.user2 = User.objects.create_user(username="testuser2", password="testpassword")
-        self.follow = Follower.objects.create(owner=self.user1, followed=self.user2)
+        self.user1 = User.objects.create_user(
+            username="testuser1",
+            password="testpassword"
+        )
+        self.user2 = User.objects.create_user(
+            username="testuser2",
+            password="testpassword"
+        )
+
+        self.follow = Follower.objects.create(
+            owner=self.user1,
+            followed=self.user2
+        )
+
         self.client = APIClient()
         self.url = reverse("followers_detail", args=[self.follow.id])
 

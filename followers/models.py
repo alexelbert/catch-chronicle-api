@@ -6,7 +6,7 @@ class Follower(models.Model):
     """
     Model for the relationship between users, indicating who is following whom.
     """
-    
+
     owner = models.ForeignKey(
         User, related_name='following', on_delete=models.CASCADE
     )
@@ -21,4 +21,3 @@ class Follower(models.Model):
 
     def __str__(self):
         return f'{self.owner} {self.followed}'
-    

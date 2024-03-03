@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     """
     A class for the profile model OneToOne relationship
-    with the User model Profile that is automatically created 
+    with the User model Profile that is automatically created
     by Django signal when user is created
     """
 

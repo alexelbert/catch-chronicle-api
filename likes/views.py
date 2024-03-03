@@ -6,9 +6,9 @@ from .serializers import LikeSerializer
 
 class LikeList(generics.ListCreateAPIView):
     """
-    List of all likes, logged in user can make a new like. 
+    List of all likes, logged in user can make a new like.
     """
-    
+
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -21,7 +21,7 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieving a like, update or delete if user is owner.
     """
-    
+
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
     permission_classes = [IsOwnerOrReadOnly]

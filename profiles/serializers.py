@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
 
+
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -13,7 +14,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_following_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -23,24 +24,23 @@ class ProfileSerializer(serializers.ModelSerializer):
             print(following)
             return following.id if following else None
         return None
-    
 
     class Meta:
         model = Profile
         fields = [
-            'id', 
+            'id',
             'owner',
-            'is_owner', 
+            'is_owner',
             'following_id',
-            'created_at', 
-            'updated_at', 
+            'created_at',
+            'updated_at',
             'catches_count',
             'name',
-            'bio', 
-            'location', 
-            'profile_picture', 
-            'facebook_url', 
-            'twitter_url', 
+            'bio',
+            'location',
+            'profile_picture',
+            'facebook_url',
+            'twitter_url',
             'instagram_url',
             'following_count',
             'followers_count',

@@ -8,7 +8,7 @@ class FollowerList(generics.ListCreateAPIView):
     """
     List follower or create new if user is logged in.
     """
-    
+
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -21,7 +21,7 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieving a follower, delete (unfollow) if user is owner.
     """
-    
+
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
     permission_classes = [IsOwnerOrReadOnly]
