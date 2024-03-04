@@ -31,7 +31,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'owner',
             'is_owner',
             'profile_id',
-            'profile_image',
+            'profile_picture',
             'created_at',
             'updated_at',
             'catch',
