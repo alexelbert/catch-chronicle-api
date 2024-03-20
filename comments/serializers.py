@@ -34,7 +34,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'profile_picture',
             'created_at',
             'updated_at',
-            'catch',
+            'catchId',
             'content'
         ]
 
