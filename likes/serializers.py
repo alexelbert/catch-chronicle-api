@@ -17,7 +17,7 @@ class LikeSerializer(serializers.ModelSerializer):
             'id',
             'created_at',
             'owner',
-            'catchId'
+            'catch'
         ]
 
     def create(self, validated_data):
