@@ -14,7 +14,7 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filterset_fields = ['catch']
+    filterset_fields = ['catchId']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
