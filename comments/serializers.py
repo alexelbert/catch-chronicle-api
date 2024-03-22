@@ -42,7 +42,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class CommentsDetailSerializer(CommentSerializer):
     """
     Serializer for CommentDetail view.
-    Sets catch field to read only for comment updates.
+    Sets catchId field to read only for comment updates.
     """
 
-    catchId = serializers.ReadOnlyField(source='catch.id')
+    catchId = serializers.ReadOnlyField(source='catchId.id')
