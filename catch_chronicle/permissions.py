@@ -18,7 +18,7 @@ class IsNotificationOwner(permissions.BasePermission):
     """
 
     def has_object_permission(self, request, view, obj):
-        if obj.user == request.user:
+        if obj.owner == request.user:
             return True
         raise PermissionDenied(
             "403 Permission denied"
