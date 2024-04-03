@@ -2,8 +2,6 @@ from rest_framework import generics, permissions, filters
 from .models import Notification
 from .serializers import NotificationSerializer
 from catch_chronicle.permissions import IsNotificationOwner
-
-
 class NotificationList(generics.ListAPIView):
     """
     List a user's notifications. No create view, since notifications are
@@ -11,14 +9,12 @@ class NotificationList(generics.ListAPIView):
     """
 
     serializer_class = NotificationSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ["created_at", "is_read"]
 
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user)
-
-
 class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve or delete a notification by id.
@@ -27,6 +23,4 @@ class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
-    # permission_classes = [permissions.IsAuthenticated, IsNotificationOwner]
-    permission_classes = [IsNotificationOwner]
-
+    permission_classes = [permissions.IsAuthenticated, IsNotificationOwner]
