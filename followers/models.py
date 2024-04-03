@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from notifications.models import Notification
 
 
 class Follower(models.Model):
@@ -21,3 +22,13 @@ class Follower(models.Model):
 
     def __str__(self):
         return f'{self.owner} {self.followed}'
+    
+    def save(self, *args, **kwargs):
+        # Create a notification when a user is followed
+        if not self.pk:  # Only on creation
+            Notification.objects.create(
+                user=self.followed,
+                notification_type='Follow',
+                notification_text=f'{self.owner.username} started following you.'
+            )
+        super().save(*args, **kwargs)
