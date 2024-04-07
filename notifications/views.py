@@ -2,6 +2,8 @@ from rest_framework import generics, permissions, filters
 from .models import Notification
 from .serializers import NotificationSerializer
 from catch_chronicle.permissions import IsNotificationOwner
+
+
 class NotificationList(generics.ListAPIView):
     """
     List a user's notifications. No create view, since notifications are
@@ -15,6 +17,8 @@ class NotificationList(generics.ListAPIView):
 
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user)
+
+
 class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve or delete a notification by id.
