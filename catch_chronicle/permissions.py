@@ -11,9 +11,10 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         return obj.owner == request.user
 
+
 class IsNotificationOwner(permissions.BasePermission):
     """
-    Granting custom permissions to limit 
+    Granting custom permissions to limit
     notification access only to the notification owner.
     """
 
