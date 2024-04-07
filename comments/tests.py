@@ -10,9 +10,7 @@ class CommentListTest(APITestCase):
     """Tests for the CommentList view."""
 
     def setUp(self):
-        self.user = User.objects.create_user(
-            username="testuser", password="testpassword"
-        )
+        self.user = User.objects.create_user(username="testuser", password="testpassword")
         self.client = APIClient()
         self.url = reverse("comments")
         self.catch = Catch.objects.create(
@@ -28,29 +26,25 @@ class CommentListTest(APITestCase):
             lure="Test Lure"
         )
         self.data = {
-            "owner": self.user.id,
-            "catch": self.catch.id,
+            "catchId": self.catch.id,
             "content": "testcontent",
         }
 
     def test_user_can_list_comments(self):
-        Comment.objects.create(owner=self.user, catch=self.catch)
+        Comment.objects.create(owner=self.user, catchId=self.catch)
         response = self.client.get(self.url)
-        count = Comment.objects.count()
-        self.assertEqual(count, 1)
+        self.assertEqual(Comment.objects.count(), 1)
         self.assertEqual(response.status_code, 200)
 
     def test_logged_in_user_can_create_comment(self):
         self.client.force_login(self.user)
-        response = self.client.post(self.url, self.data)
-        count = Comment.objects.count()
-        self.assertEqual(count, 1)
+        response = self.client.post(self.url, self.data, format='json')
+        self.assertEqual(Comment.objects.count(), 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_logged_out_user_cannot_create_comment(self):
-        response = self.client.post(self.url, self.data)
-        count = Comment.objects.count()
-        self.assertEqual(count, 0)
+        response = self.client.post(self.url, self.data, format='json')
+        self.assertEqual(Comment.objects.count(), 0)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
@@ -78,16 +72,17 @@ class CommentDetailTest(APITestCase):
             lure="Test Lure"
         )
         self.comment = Comment.objects.create(
-            owner=self.user1, catch=self.catch
+            owner=self.user1, catchId=self.catch
         )
         self.url = reverse("comments_detail", args=[self.comment.id])
+        
         self.data = {
             "owner": self.user1.id,
-            "catch": self.catch.id,
+            "catchId": self.catch.id,
             "content": "testcontent",
         }
         self.updated_data = {
-            "catch": self.catch.id,
+            "catchId": self.catch.id,
             "content": "updatedcontent",
         }
 
