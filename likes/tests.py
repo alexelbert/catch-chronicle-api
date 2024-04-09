@@ -12,6 +12,7 @@ class LikeListTest(APITestCase):
     """
 
     def setUp(self):
+        super().setUp()
         self.user = User.objects.create_user(
             username="testuser", password="testpassword"
         )
@@ -29,6 +30,8 @@ class LikeListTest(APITestCase):
             weather="sunny",
             lure="Test Lure"
         )
+
+        print(f"\n{self.id()}")
 
     def test_user_can_list_likes(self):
         Like.objects.create(owner=self.user, catch=self.catch)
@@ -57,6 +60,7 @@ class LikeDetailTest(APITestCase):
     """
 
     def setUp(self):
+        super().setUp()
         self.user1 = User.objects.create_user(
             username="testuser1", password="testpassword"
         )
@@ -78,6 +82,8 @@ class LikeDetailTest(APITestCase):
         )
         self.like = Like.objects.create(owner=self.user1, catch=self.catch)
         self.url = reverse("like_detail", args=[self.like.id])
+
+        print(f"\n{self.id()}")
 
     def test_user_can_unlike_catch(self):
         self.client.force_login(self.user1)

@@ -21,5 +21,8 @@ class CurrentUserSerializerTestCase(APITestCase):
         data = serializer.data
 
         self.assertEqual(data["profile_id"], self.user.profile.id)
-        self.assertEqual(data["profile_picture"], self.user.profile.profile_picture.url)
+        self.assertEqual(
+            data["profile_picture"],
+            self.user.profile.profile_picture.url
+        )
         self.assertIn("default_profile", data["profile_picture"])

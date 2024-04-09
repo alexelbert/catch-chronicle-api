@@ -12,6 +12,7 @@ class FollowListTest(APITestCase):
     """
 
     def setUp(self):
+        super().setUp()
         # Create two test users
         self.user1 = User.objects.create_user(
             username="testuser1",
@@ -24,6 +25,10 @@ class FollowListTest(APITestCase):
 
         self.client = APIClient()
         self.url = reverse("followers")
+
+        # Print test id
+        print(f"\n{self.id()}")
+
 
     def test_user_can_list_follows(self):
         Follower.objects.create(owner=self.user1, followed=self.user2)
@@ -59,6 +64,7 @@ class FollowDetailTest(APITestCase):
     """
 
     def setUp(self):
+        super().setUp()
         # Create test users and a follow relationship
         self.user1 = User.objects.create_user(
             username="testuser1",
@@ -76,6 +82,10 @@ class FollowDetailTest(APITestCase):
 
         self.client = APIClient()
         self.url = reverse("followers_detail", args=[self.follow.id])
+
+        
+        print(f"\n{self.id()}")
+
 
     def test_user_can_retrieve_follow(self):
         response = self.client.get(self.url)

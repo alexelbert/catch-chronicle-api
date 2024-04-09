@@ -10,7 +10,10 @@ class CommentListTest(APITestCase):
     """Tests for the CommentList view."""
 
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="testpassword")
+        super().setUp()
+        self.user = User.objects.create_user(
+            username="testuser", password="testpassword"
+        )
         self.client = APIClient()
         self.url = reverse("comments")
         self.catch = Catch.objects.create(
@@ -29,6 +32,9 @@ class CommentListTest(APITestCase):
             "catchId": self.catch.id,
             "content": "testcontent",
         }
+
+        # Print test id
+        print(f"\n{self.id()}")
 
     def test_user_can_list_comments(self):
         Comment.objects.create(owner=self.user, catchId=self.catch)
@@ -52,6 +58,7 @@ class CommentDetailTest(APITestCase):
     """Tests for the CommentDetail view."""
 
     def setUp(self):
+        super().setUp()
         self.user1 = User.objects.create_user(
             username="testuser1", password="testpassword"
         )
@@ -75,7 +82,7 @@ class CommentDetailTest(APITestCase):
             owner=self.user1, catchId=self.catch
         )
         self.url = reverse("comments_detail", args=[self.comment.id])
-        
+
         self.data = {
             "owner": self.user1.id,
             "catchId": self.catch.id,
@@ -86,13 +93,15 @@ class CommentDetailTest(APITestCase):
             "content": "updatedcontent",
         }
 
+        print(f"\n{self.id()}")
+
     def test_user_can_retrieve_comment(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_user_can_update_own_comment(self):
         self.client.force_login(self.user1)
-        response = self.client.put(self.url, self.updated_data)
+        response = self.client.put(self.url, self.updated_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_user_can_delete_own_comment(self):
