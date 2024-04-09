@@ -9,7 +9,7 @@ Key features:
 - User authentication
 - Endpoints for logging catches
 - Store geolocation data with catches
-- Endpoints for user interactions (Profiles, Likes, Comments, Followers)
+- Endpoints for user interactions (Profiles, Likes, Comments, Followers, Notifications)
 
 The deployed API can be found here: [Catch Chronicle API](https://catch-chronicle-api-d205d9d4b14c.herokuapp.com)
 
@@ -37,6 +37,10 @@ The Like and Comment model are both related to the Catch and User model. It allo
 
 The Follower model establishes a "following" relationship between two User instances. The *owner* field of the Follower model represents the user who is initiating the follow, while the *followed* field represents the user who is being followed.
 
+#### Notification Model
+
+The Notification model keeps users updated about important activity in the application, linking directly to the User model to identify who each notification is for. It tracks various events, like new followers, likes on catches, or new comments. Key fields include *notification_type* to identify the event type, *notification_text* for details about the event, and *is_read* to show if the user has seen it. This setup ensures users don't miss out on interactions, making the users experience more engaging and interactive.
+
 
 ## Technologies Used
 
@@ -55,8 +59,6 @@ The API is built with [Django Rest Framework](https://www.django-rest-framework.
 - [dj-rest-auth](https://pypi.org/project/dj-rest-auth/): Advanced DRF authentication (Version 2.2.8 or older has to be used in order for the custom UserSerializer functionality to work)
 - [django-cors-headers](https://pypi.org/project/django-cors-headers/): Handle Cross-Origin Resource Sharing in Django
 - [django-filter](https://pypi.org/project/django-filter/): Provides filtering with URL parameters for querysets
-- [django-tagulous](https://pypi.org/project/django-tagulous/): Tagging library for Django
-- [coverage](https://pypi.org/project/coverage/): Analyzing test coverage
 
 ### Other Software
 
@@ -148,12 +150,10 @@ Individual documentation pages that have been used are referenced in the code.
 
 All other sources used during development are listed here (all code from these sources has been thoroughly reviewed, understood and adapted to the specific circumstances of this project). References to the sources can also be found in the code.
 
-- Conditionally truncate a string in Python: https://stackoverflow.com/a/52279347
 - Print test ID for each test: https://docs.python.org/3/library/unittest.html#unittest.TestCase.id
-- Mock a file upload for testing: https://stackoverflow.com/a/20508621
-- Avoiding TransactionManagementError in unit tests from: https://stackoverflow.com/a/23326971
+- Middleware error allauth: https://stackoverflow.com/a/77036615
 
 ### Acknowledgements
 
 - I would like to thank my Code Institute mentor Mo for his advice and support.
-- I would like to thank my girlfriend Sabrina for moral support and advice.
+- I would like to thank my girlfriend Sabrina for moral support, advice and help with testing the application.
