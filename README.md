@@ -6,10 +6,11 @@ The API is designed to support uploading catch data including geolocation data a
 
 Key features:
 
-- User authentication
-- Endpoints for logging catches
-- Store geolocation data with catches
-- Endpoints for user interactions (Profiles, Likes, Comments, Followers, Notifications)
+- User authentication endpoints: Users can sign up and login. Users profile is created on sign up.
+- Endpoints for logging catches: Fill out fields and upload an image that is then being stored.
+- User interactions endpoints: Users that is authenticated can follow other users, like and comment on other users catches.
+- Endpoint for notifications: Notifications are automatically generated that are user-specific when users like, comment on specific users catches or follows.
+- Search control: The API provides options for filtering and sorting search results.
 
 The deployed API can be found here: [Catch Chronicle API](https://catch-chronicle-api-d205d9d4b14c.herokuapp.com)
 
@@ -41,6 +42,10 @@ The Follower model establishes a "following" relationship between two User insta
 
 The Notification model keeps users updated about important activity in the application, linking directly to the User model to identify who each notification is for. It tracks various events, like new followers, likes on catches, or new comments. Key fields include *notification_type* to identify the event type, *notification_text* for details about the event, and *is_read* to show if the user has seen it. This setup ensures users don't miss out on interactions, making the users experience more engaging and interactive.
 
+
+### User stories
+
+Separate project board and user stories was created for the API side of this project. User stories be found here [USER STORIES](https://github.com/alexelbert/catch-chronicle-api/issues?q=is%3Aissue+is%3Aclosed) 
 
 ## Technologies Used
 
