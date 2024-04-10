@@ -17,6 +17,175 @@ Follow/Unfollow | Create & delete |  Users can follow/unfollow other users | Wor
 Notifications | User-specific notifications created from users follow, comment and likes | A notifications are being dynamically created| Works as expected
 Likes | Create & delete | A catch can be liked/un-liked | Works as expected
 
+Test for [Test for User story #1](https://github.com/alexelbert/catch-chronicle-api/issues/1)
+
+<details>
+  <summary>Show detailed results</summary>
+    User Story: As a developer, I want to be able to create, read, update, and delete user profiles.
+
+    **Test Steps:**
+    - Logged in as admin i have CRUD for users
+    **Expected Results:**
+    - Able to have full CRUD functionality as admin for users
+    
+    **Screenshots**
+        
+    ![User Result](/docs/screenshots/usercrud.png)
+
+    <hr>
+    
+    ![User Result](/docs/screenshots/usercrud2.png)
+
+<hr>
+  
+  ![User Result](/docs/screenshots/usercrud3.png)
+
+<hr>
+  
+  ![User Result](/docs/screenshots/usercrud4.png)
+
+<hr>
+  
+  ![User Result](/docs/screenshots/usercrud5.png)
+
+<hr>
+  
+  ![User Result](/docs/screenshots/usercrud6.png)
+</details>
+
+<hr>
+
+Test for [Test for User story #8](https://github.com/alexelbert/catch-chronicle-api/issues/8)
+
+<details>
+  <summary>Show detailed results</summary>
+  User Story: As a developer I want to be able to create, read, update and delete catches.
+
+  **Test Steps:**
+  - Logged in as admin i have CRUD for catches
+  **Expected Results:**
+  - Able to have full CRUD functionality as admin for catches
+  
+  **Screenshots**
+    
+  ![Catches Result](/docs/screenshots/catchescrud1.png)
+
+  <hr>
+  
+  ![Catches Result](/docs/screenshots/catchescrud2.png)
+
+
+<hr>
+  
+  ![Catches Result](/docs/screenshots/catchescrud3.png)
+
+
+<hr>
+  
+  ![Catches Result](/docs/screenshots/catchescrud4.png)
+
+</details>
+
+<hr>
+
+Test for [Test for User story #5](https://github.com/alexelbert/catch-chronicle-api/issues/5)
+
+<details>
+  <summary>Show detailed results</summary>
+  User Story: As a developer, I want access to create, read, update, and delete comments.
+
+  **Test Steps:**
+  - Logged in as admin i have CRUD for comments
+  **Expected Results:**
+  - Able to have full CRUD functionality as admin for comments
+  
+  **Screenshots**
+    
+  ![Comments Result](/docs/screenshots/commentcrud.png)
+
+  <hr>
+  
+  ![Comments Result](/docs/screenshots/commentcrud2.png)
+
+
+<hr>
+  
+  ![Comments Result](/docs/screenshots/commentcrud3.png)
+
+</details>
+
+<hr>
+
+Test for [Test for User story #6](https://github.com/alexelbert/catch-chronicle-api/issues/6)
+
+<details>
+  <summary>Show detailed results</summary>
+  User Story: As a developer, I want access to create, read, update, and delete follow/unfollow relations between users.
+
+  **Test Steps:**
+  - Logged in as admin i have CRUD for follow/unfollow
+  **Expected Results:**
+  - Able to have full CRUD functionality as admin for follow/unfollow
+  
+  **Screenshots**
+    
+  ![Follow/Unfollow Result](/docs/screenshots/follow-unfollow-crud.png)
+
+  <hr>
+  
+  ![Follow/Unfollow Result](/docs/screenshots/follow-unfollow-crud2.png)
+
+</details>
+
+<hr>
+
+Test for [Test for User story #4](https://github.com/alexelbert/catch-chronicle-api/issues/4)
+
+<details>
+  <summary>Show detailed results</summary>
+  User Story: As a developer, I want access to create, read, update and delete likes.
+
+  **Test Steps:**
+  - Logged in as admin i have CRUD for like
+  **Expected Results:**
+  - Able to have full CRUD functionality as admin for like
+  
+  **Screenshots**
+    
+  ![Like Result](/docs/screenshots/likescrud.png)
+
+  <hr>
+  
+  ![Like Result](/docs/screenshots/likescrud2.png)
+
+</details>
+
+<hr>
+
+Test for [Test for User story #7](https://github.com/alexelbert/catch-chronicle-api/issues/7)
+
+<details>
+  <summary>Show detailed results</summary>
+  User Story: As a developer I want notifications to be created automatically when comments, likes, follows are created.
+
+  **Test Steps:**
+  - Logged in as admin can see dynamically created notifications and delete
+  **Expected Results:**
+  - Able to have full CRUD functionality as admin for notifications
+  
+  **Screenshots**
+    
+  ![Like Result](/docs/screenshots/notifications.png)
+
+  <hr>
+  
+  ![Like Result](/docs/screenshots/notifications2.png)
+
+</details>
+
+<hr>
+
+
 ## Automated Testing
 
 All Python code written for the project has been tested by writing automated unit tests using the testing features implemented in Django and Django Rest Framework ([Testing in Django](https://docs.djangoproject.com/en/4.2/topics/testing/), [Testing in DRF](https://www.django-rest-framework.org/api-guide/testing/)).
