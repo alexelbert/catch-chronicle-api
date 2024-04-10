@@ -2,6 +2,21 @@
 
 [Go to README.md](../../README.md)
 
+## User Story Testing
+
+User story testing has been executed from an Admin point of view: 
+
+**Test** | **Action** | **Expected Result** | **Actual Result**
+-------- | ------------------- | ------------------- | -----------------
+User Registration | Create, update & delete user | A user can be created, edited or deleted | Works as expected
+User login | Change permissions | User permissions can be updated | Works as expected
+User profile | Create, update & delete | User profile can be created, edited or deleted | Works as expected
+Catches | Create, update & delete | A catches can be created, edited or deleted | Works as expected
+Comments | Create, update & delete | A comment can be created, edited or deleted | Works as expected
+Follow/Unfollow | Create & delete |  Users can follow/unfollow other users | Works as expected
+Notifications | User-specific notifications created from users follow, comment and likes | A notifications are being dynamically created| Works as expected
+Likes | Create & delete | A catch can be liked/un-liked | Works as expected
+
 ## Automated Testing
 
 All Python code written for the project has been tested by writing automated unit tests using the testing features implemented in Django and Django Rest Framework ([Testing in Django](https://docs.djangoproject.com/en/4.2/topics/testing/), [Testing in DRF](https://www.django-rest-framework.org/api-guide/testing/)).
@@ -104,7 +119,7 @@ All python code written for the project passes through the PEP 8 [python linter]
 | Bug | Fix | Commit |
 |---|---|---|
 | There was an issue with dj-rest-auth-logout in version 5 of Django. Resulting in users not being able to log out. | Fixed by downgrading Django version, django-allauth and dj-rest-auth for better compatibility. | [Commit](https://github.com/alexelbert/catch-chronicle-api/commit/de66a8653a2d17a1c864f3b5c04540ef10dfbcf8) |
-| There was an issue after downgrading python version and reinstalling matching versions for Django and Corsheaders. | Fix from [Stack Owerflow](https://stackoverflow.com/questions/77012106/django-allauth-modulenotfounderror-no-module-named-allauth-account-middlewar/77036615#77036615) where due to version control ```'allauth.account.middleware.AccountMiddleware', ``` had to be removed.  | [Commit](https://github.com/alexelbert/catch-chronicle-api/commit/5a86f7f16213204a5b8d0e72381bfd5fa987abd9) |
+| There was an issue after downgrading python version and reinstalling matching versions for Django and Corsheaders. | Fix from [Stack Owerflow](https://stackoverflow.com/questions/77012106/django-allauth-modulenotfounderror-no-module-named-allauth-account-middlewar/77036615#77036615) where due to version control ```'allauth.account.middleware.AccountMiddleware',``` had to be removed.  | [Commit](https://github.com/alexelbert/catch-chronicle-api/commit/5a86f7f16213204a5b8d0e72381bfd5fa987abd9) |
 | There was an issue with comments displaying on all catches across the whole site. | Fixed by renaming model field from from catch to catchId linked to comments including the filterset fields to be able to filter the comments to the correct catch. | [Commit 1](https://github.com/alexelbert/catch-chronicle-api/commit/f3e78b66e9452e8a0f2ccb403e2cb3acbb2f1274) [Commit 2](https://github.com/alexelbert/catch-chronicle-api/commit/ab81af48ddeb4de77ef961017cca867423b5dde0) [Commit 3](https://github.com/alexelbert/catch-chronicle-api/commit/c30f100583e722175247165051d2c2d2e9da7772) |
 
 
